@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Canvas Kalp · Optimize Patlama</title>
+    <title>Canvas Kalp · Ultra Hafif Patlama</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,700;14..32,900&display=swap" rel="stylesheet">
@@ -305,7 +305,7 @@
             100% { transform: scale(1); }
         }
 
-        /* ===== KONFETTİ (Patlama) - OPTİMİZE ===== */
+        /* ===== KONFETTİ - ULTRA HAFIF ===== */
         .confetti-container {
             position: fixed;
             inset: 0;
@@ -318,15 +318,15 @@
             position: absolute;
             opacity: 0;
             transform: translate(0, 0) scale(0) rotate(0deg);
-            animation: confettiFly var(--duration, 2.5s) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: confettiFly var(--duration, 1.8s) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
             will-change: transform, opacity;
-            font-size: clamp(18px, 3vw, 40px);
+            font-size: clamp(14px, 2.5vw, 32px);
             line-height: 1;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            filter: drop-shadow(0 0 10px rgba(255, 45, 139, 0.05));
+            filter: drop-shadow(0 0 5px rgba(255, 45, 139, 0.03));
             pointer-events: none;
             font-weight: 700;
             backface-visibility: hidden;
@@ -338,13 +338,13 @@
                 opacity: 0;
                 transform: translate(0, 0) scale(0) rotate(0deg);
             }
-            15% {
-                opacity: 1;
-                transform: translate(var(--tx1, 0px), var(--ty1, -80px)) scale(1.1) rotate(var(--r1, 20deg));
+            20% {
+                opacity: 0.9;
+                transform: translate(var(--tx1, 0px), var(--ty1, -60px)) scale(1.0) rotate(var(--r1, 20deg));
             }
             100% {
                 opacity: 0;
-                transform: translate(var(--tx2, 0px), var(--ty2, -500px)) scale(0.1) rotate(var(--r2, 400deg));
+                transform: translate(var(--tx2, 0px), var(--ty2, -350px)) scale(0.1) rotate(var(--r2, 300deg));
             }
         }
 
@@ -359,10 +359,10 @@
 
         .float-heart {
             position: absolute;
-            font-size: clamp(18px, 2.5vw, 38px);
+            font-size: clamp(16px, 2.2vw, 32px);
             opacity: 0;
             animation: floatHeart var(--duration, 14s) ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(255, 45, 139, 0.05));
+            filter: drop-shadow(0 0 10px rgba(255, 45, 139, 0.03));
             will-change: transform, opacity;
             backface-visibility: hidden;
         }
@@ -372,19 +372,19 @@
                 opacity: 0;
                 transform: translateY(100vh) scale(0.3) rotate(0deg);
             }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
             100% {
                 opacity: 0;
-                transform: translateY(-20vh) scale(1.1) rotate(var(--rot, 360deg));
+                transform: translateY(-20vh) scale(1.0) rotate(var(--rot, 360deg));
             }
         }
 
         @media (max-width: 600px) {
             .modal-box { padding: 2rem 1.5rem; }
             .modal-input-group input { width: 76px; height: 76px; font-size: 2.8rem; }
-            .float-heart { font-size: clamp(14px, 3.5vw, 26px); }
-            .confetti-piece { font-size: clamp(14px, 4vw, 30px); }
+            .float-heart { font-size: clamp(12px, 3vw, 22px); }
+            .confetti-piece { font-size: clamp(12px, 3.5vw, 24px); }
         }
 
         @media (max-width: 400px) {
@@ -409,6 +409,7 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <h2>✦ bir harf seç</h2>
+            <p>Kalbin tam ortasında parlayacak özel harfi gir</p>
             <div class="modal-input-group">
                 <input type="text" id="letterInput" maxlength="1" placeholder="?" autofocus>
                 <button class="btn-neon-modal" id="modalBtn">Işıltıyı Başlat</button>
@@ -435,10 +436,10 @@
             // 1. YILDIZLAR
             // =============================================
             const starsContainer = document.getElementById('starsContainer');
-            for (let i = 0; i < 160; i++) {
+            for (let i = 0; i < 140; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                const size = 1.2 + Math.random() * 3.2;
+                const size = 1.2 + Math.random() * 3;
                 star.style.setProperty('--size', size + 'px');
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
@@ -448,20 +449,20 @@
             }
 
             // =============================================
-            // 2. UÇAN KALPLER (Azaltıldı, optimize)
+            // 2. UÇAN KALPLER (Az)
             // =============================================
             const floatingHearts = document.getElementById('floatingHearts');
-            const heartEmojis = ['❤️', '💖', '💗', '💕', '💘', '♥️', '💝'];
+            const heartEmojis = ['❤️', '💖', '💗', '💕', '💘'];
 
-            for (let i = 0; i < 18; i++) {
+            for (let i = 0; i < 14; i++) {
                 const el = document.createElement('div');
                 el.className = 'float-heart';
                 el.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
                 el.style.left = Math.random() * 100 + '%';
-                el.style.setProperty('--duration', (12 + Math.random() * 18) + 's');
+                el.style.setProperty('--duration', (12 + Math.random() * 16) + 's');
                 el.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-                el.style.animationDelay = (Math.random() * 18) + 's';
-                const size = 18 + Math.random() * 30;
+                el.style.animationDelay = (Math.random() * 16) + 's';
+                const size = 16 + Math.random() * 26;
                 el.style.fontSize = size + 'px';
                 floatingHearts.appendChild(el);
             }
@@ -493,7 +494,6 @@
             let animId = null;
             let letter = '♥';
             let explosionInterval = null;
-            let explosionTimeout = null;
 
             function fillHeart() {
                 ctx.beginPath();
@@ -505,13 +505,13 @@
 
                 const gradient = ctx.createRadialGradient(350, 350, 50, 350, 350, 300);
                 gradient.addColorStop(0, 'rgba(255, 45, 139, 0.2)');
-                gradient.addColorStop(0.5, 'rgba(180, 78, 255, 0.12)');
-                gradient.addColorStop(1, 'rgba(255, 45, 139, 0.03)');
+                gradient.addColorStop(0.5, 'rgba(180, 78, 255, 0.1)');
+                gradient.addColorStop(1, 'rgba(255, 45, 139, 0.02)');
                 ctx.fillStyle = gradient;
                 ctx.fill();
 
-                ctx.shadowColor = 'rgba(255, 45, 139, 0.08)';
-                ctx.shadowBlur = 50;
+                ctx.shadowColor = 'rgba(255, 45, 139, 0.06)';
+                ctx.shadowBlur = 40;
                 ctx.fill();
                 ctx.shadowBlur = 0;
             }
@@ -523,8 +523,8 @@
                     fillHeart();
                 }
 
-                ctx.shadowColor = 'rgba(255, 45, 139, 0.2)';
-                ctx.shadowBlur = 25;
+                ctx.shadowColor = 'rgba(255, 45, 139, 0.15)';
+                ctx.shadowBlur = 20;
 
                 ctx.beginPath();
                 ctx.lineWidth = 5;
@@ -546,11 +546,11 @@
                 }
                 ctx.stroke();
 
-                ctx.shadowColor = 'rgba(180, 78, 255, 0.08)';
-                ctx.shadowBlur = 40;
+                ctx.shadowColor = 'rgba(180, 78, 255, 0.05)';
+                ctx.shadowBlur = 30;
                 ctx.beginPath();
-                ctx.lineWidth = 14;
-                ctx.strokeStyle = 'rgba(180, 78, 255, 0.05)';
+                ctx.lineWidth = 12;
+                ctx.strokeStyle = 'rgba(180, 78, 255, 0.03)';
                 if (drawCount > 0) {
                     ctx.moveTo(heartPath[0].x, heartPath[0].y);
                     for (let i = 1; i < drawCount && i < heartPath.length; i++) {
@@ -561,10 +561,10 @@
 
                 if (drawCount > 0 && drawCount < heartPath.length) {
                     const p = heartPath[drawCount - 1];
-                    ctx.shadowColor = 'rgba(255, 45, 139, 0.8)';
-                    ctx.shadowBlur = 40;
+                    ctx.shadowColor = 'rgba(255, 45, 139, 0.7)';
+                    ctx.shadowBlur = 30;
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI);
+                    ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
                     ctx.fillStyle = '#ff2d8b';
                     ctx.fill();
                 }
@@ -606,13 +606,13 @@
             }
 
             // =============================================
-            // 4. PATLAMA (OPTİMİZE - daha az parçacık, daha hızlı)
+            // 4. PATLAMA - ULTRA HAFIF (Çok az parçacık)
             // =============================================
             const confettiContainer = document.getElementById('confettiContainer');
-            const emojis = ['❤️', '💖', '💗', '💕', '💘', '♥️', '💝', '✨', '🌟', '💫', '🌸', '🌺', '🌹'];
+            const emojis = ['❤️', '💖', '💗', '💕', '🌸', '🌺', '🌹'];
 
             function createExplosion(fromCenter = false) {
-                const count = 60 + Math.floor(Math.random() * 40); // Azaltıldı
+                const count = 25 + Math.floor(Math.random() * 20); // Çok azaltıldı
                 const heartRect = document.getElementById('heartWrapper').getBoundingClientRect();
                 const cx = heartRect.left + heartRect.width / 2;
                 const cy = heartRect.top + heartRect.height / 2;
@@ -623,23 +623,22 @@
 
                     const rnd = Math.random();
                     let content;
-                    if (rnd < 0.2) content = letter;
-                    else if (rnd < 0.4) content = emojis[Math.floor(Math.random() * emojis.length)];
-                    else if (rnd < 0.6) content = '🌸';
-                    else if (rnd < 0.8) content = '🌹';
+                    if (rnd < 0.3) content = letter;
+                    else if (rnd < 0.6) content = emojis[Math.floor(Math.random() * emojis.length)];
+                    else if (rnd < 0.8) content = '🌸';
                     else content = '❤️';
                     piece.textContent = content;
 
-                    const size = 16 + Math.random() * 32;
+                    const size = 14 + Math.random() * 24;
                     piece.style.fontSize = size + 'px';
 
                     let originX, originY;
-                    if (fromCenter || Math.random() < 0.25) {
+                    if (fromCenter || Math.random() < 0.2) {
                         originX = (cx / window.innerWidth) * 100;
                         originY = (cy / window.innerHeight) * 100;
                     } else {
                         const angle = Math.random() * 2 * Math.PI;
-                        const radius = (heartRect.width / 2) * (0.6 + Math.random() * 0.4);
+                        const radius = (heartRect.width / 2) * (0.5 + Math.random() * 0.5);
                         const px = cx + Math.cos(angle) * radius;
                         const py = cy + Math.sin(angle) * radius;
                         originX = (px / window.innerWidth) * 100;
@@ -647,11 +646,11 @@
                     }
 
                     const angle2 = Math.random() * 2 * Math.PI;
-                    const distance = 80 + Math.random() * 350;
-                    const tx1 = Math.cos(angle2) * (20 + Math.random() * 60);
-                    const ty1 = Math.sin(angle2) * (20 + Math.random() * 60) - 40;
-                    const tx2 = Math.cos(angle2) * distance * (0.3 + Math.random() * 0.5);
-                    const ty2 = Math.sin(angle2) * distance * (0.3 + Math.random() * 0.5) - 60;
+                    const distance = 60 + Math.random() * 250;
+                    const tx1 = Math.cos(angle2) * (15 + Math.random() * 40);
+                    const ty1 = Math.sin(angle2) * (15 + Math.random() * 40) - 30;
+                    const tx2 = Math.cos(angle2) * distance * (0.3 + Math.random() * 0.4);
+                    const ty2 = Math.sin(angle2) * distance * (0.3 + Math.random() * 0.4) - 50;
 
                     piece.style.left = originX + '%';
                     piece.style.top = originY + '%';
@@ -661,19 +660,18 @@
                     piece.style.setProperty('--ty2', ty2 + 'px');
                     piece.style.setProperty('--r1', (Math.random() * 360) + 'deg');
                     piece.style.setProperty('--r2', (Math.random() * 360) + 'deg');
-                    piece.style.setProperty('--duration', (1.8 + Math.random() * 1.8) + 's');
-                    piece.style.animationDelay = (Math.random() * 0.2) + 's';
+                    piece.style.setProperty('--duration', (1.4 + Math.random() * 1.2) + 's');
+                    piece.style.animationDelay = (Math.random() * 0.15) + 's';
 
                     confettiContainer.appendChild(piece);
                     setTimeout(() => {
                         if (piece.parentNode) piece.remove();
-                    }, 4000);
+                    }, 3000);
                 }
             }
 
             function startExplosionLoop() {
                 if (explosionInterval) clearInterval(explosionInterval);
-                if (explosionTimeout) clearTimeout(explosionTimeout);
 
                 // İlk patlama
                 setTimeout(() => {
@@ -681,19 +679,16 @@
                     createExplosion(false);
                 }, 300);
 
-                // Daha seyrek patlama (3.5 saniyede bir)
+                // Daha seyrek (4 saniyede bir)
                 explosionInterval = setInterval(() => {
                     createExplosion(Math.random() < 0.3);
-                    if (Math.random() < 0.3) {
-                        setTimeout(() => createExplosion(false), 300);
-                    }
-                }, 3500);
+                }, 4000);
 
-                // 6 saniye sonra ekstra
-                explosionTimeout = setTimeout(() => {
+                // 5 saniye sonra ekstra
+                setTimeout(() => {
                     createExplosion(true);
                     createExplosion(false);
-                }, 6000);
+                }, 5000);
             }
 
             // =============================================
@@ -762,7 +757,7 @@
             // =============================================
             letterInput.focus();
 
-            console.log('💖 Optimize edilmiş patlama · Akıcı 60 FPS');
+            console.log('💖 Ultra hafif patlama · Hiç kasma yok!');
         })();
     </script>
 
